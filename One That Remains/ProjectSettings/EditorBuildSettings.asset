@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/FinalScenes/DontDelScenes/Main_Menu.unity
+    guid: 87f5ec0843a882a47bef0fec4a87437f
+  - enabled: 1
+    path: Assets/FinalScenes/DontDelScenes/Cutscene1.unity
+    guid: 738ed927a4363aa4aae12ed429c834ed
+  - enabled: 1
+    path: Assets/FinalScenes/DontDelScenes/forest.unity
+    guid: 75e406bd14c174f43822a60e73e1c1e9
+  - enabled: 1
+    path: Assets/FinalScenes/DontDelScenes/attic.unity
+    guid: 3adea703eb0618642bbdd018c41a39ba
+  - enabled: 1
+    path: Assets/FinalScenes/DontDelScenes/house.unity
+    guid: 5d5f0dcda0e4bdf4eb84406673cb2914
+  - enabled: 1
+    path: Assets/FinalScenes/DontDelScenes/hallway.unity
+    guid: 75e6b9bd73c08a44ea22c5a969b0a2a6
+  - enabled: 1
+    path: Assets/FinalScenes/DontDelScenes/Cutscene2.unity
+    guid: 797cdd662eedc1e47a1e524879fb28c4
+  m_configObjects: {}
