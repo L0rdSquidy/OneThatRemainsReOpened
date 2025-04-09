@@ -34,7 +34,7 @@ public class Grappling : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(grappleKey) && pm.returnSpeed() <= 8) StartGrapple();
+        if (Input.GetKeyDown(grappleKey) && pm.returnSpeed() <= 16 && !pm.grounded) StartGrapple();
 
         if (grapplingCdTimer > 0)
             grapplingCdTimer -= Time.deltaTime;

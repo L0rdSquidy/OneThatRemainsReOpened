@@ -269,7 +269,7 @@ public class PlayerMovementGrappling : MonoBehaviour
 	private void Jump()
 	{
 		float JumpPercentages =  ((transform.position.y - lastGroundedPos.y)/(FullMaxJumpHeight-lastGroundedPos.y)) * 100;
-		Debug.Log("JP%" + JumpPercentages);
+		// Debug.Log("JP%" + JumpPercentages);
 		// reset y velocity
 		if (IsJumping && !readyToJump)
 		{
@@ -356,13 +356,13 @@ public class PlayerMovementGrappling : MonoBehaviour
 
 	public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
 	{
-		float gravity = Physics.gravity.y * 60;
+		float gravity = Physics.gravity.y * 6;
 		float displacementY = endPoint.y - startPoint.y;
 		Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
 
 		Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
 		Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) 
-			+ Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
+			+ Mathf.Sqrt(4 * (displacementY - trajectoryHeight) / gravity));
 		return velocityXZ + velocityY;
 	}
 
