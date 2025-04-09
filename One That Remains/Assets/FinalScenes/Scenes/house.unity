@@ -49015,7 +49015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 681985396938606187, guid: 27cf33e6b47bace419106fb5efeb4740, type: 3}
       propertyPath: horizontalThrustForce
-      value: 1000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 681985396938606187, guid: 27cf33e6b47bace419106fb5efeb4740, type: 3}
       propertyPath: whatIsGrappleable.m_Bits
