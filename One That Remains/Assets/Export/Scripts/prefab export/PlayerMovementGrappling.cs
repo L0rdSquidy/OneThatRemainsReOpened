@@ -27,9 +27,10 @@ public class PlayerMovementGrappling : MonoBehaviour
 	public float jumpForce;
 	public float jumpCooldown;
 	public float airMultiplier;
-	public bool IsJumping;
-	public bool IsFalling;
-	public bool readyToJump;
+	public float FallingMultiplier = 0.1f;
+	bool IsJumping;
+	bool IsFalling;
+	bool readyToJump;
 
 	
 
@@ -298,7 +299,7 @@ public class PlayerMovementGrappling : MonoBehaviour
 		if (IsFalling)
 		{
 			ResetJump();
-			rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y - 0.1f, rb.velocity.z);
+			rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y - FallingMultiplier, rb.velocity.z);
 		}
 		
 
