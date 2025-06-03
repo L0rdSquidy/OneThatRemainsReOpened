@@ -9,6 +9,7 @@ TagManager:
   - Wowzers
   - Hit
   - zipline
+  - Objective
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Leafs
-  - 
+  - Objectives
   - Suimono_Water
   - Suimono_Depth
   - Suimono_Screen
