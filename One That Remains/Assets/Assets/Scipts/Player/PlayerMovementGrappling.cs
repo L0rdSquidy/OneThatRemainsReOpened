@@ -124,14 +124,17 @@ public class PlayerMovementGrappling : MonoBehaviour
 		buheheh = false;
 		HitPOint.SetActive(false);
 		} 
-
-		if(hpScript.returnHitcounter() == 1)
+		if (hpScript != null)
+		{
+			if(hpScript.returnHitcounter() == 1)
 		{
 			
 		   
 		   UI.SetActive(true); 
 
 		   StartCoroutine(WaitForHitScreen());
+		}
+		
 		}
 		
 	}

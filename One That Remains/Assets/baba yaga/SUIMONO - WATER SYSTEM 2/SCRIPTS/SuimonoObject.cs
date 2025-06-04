@@ -1168,12 +1168,12 @@ namespace Suimono.Core
 
 			//get preset directories
 			presetDirsArr = new List<string>();
-			dirInfo = new DirectoryInfo(dir+"/").GetFiles("SUIMONO_PRESETS_*");
-			if (new DirectoryInfo(dir+"/") != null){
-				for (d = 0; d < dirInfo.Length; d++){
-					presetDirsArr.Add(dirInfo[d].ToString());
-				}
-			}
+			// dirInfo = new DirectoryInfo(dir+"/").GetFiles("SUIMONO_PRESETS_*");
+			// if (new DirectoryInfo(dir+"/") != null){
+			// 	for (d = 0; d < dirInfo.Length; d++){
+			// 		presetDirsArr.Add(dirInfo[d].ToString());
+			// 	}
+			// }
 			presetDirs = new List<string>(new string[presetDirsArr.Count]);
 			for (dn = 0; dn < presetDirsArr.Count; dn++){
 				presetDirs[dn] = presetDirsArr[dn].ToString();
@@ -1185,14 +1185,14 @@ namespace Suimono.Core
 
 			//get preset files listing
 			presetFilesArr = new List<string>();
-			pdir = dir + "/SUIMONO_PRESETS_"+presetDirs[presetFileIndex];
+			// pdir = dir + "/SUIMONO_PRESETS_"+presetDirs[presetFileIndex];
 
-			fileInfo = new DirectoryInfo(pdir).GetFiles("SUIMONO_PRESET_*");
-			if (new DirectoryInfo(pdir) != null){
-				for (f = 0; f < fileInfo.Length; f++){
-					presetFilesArr.Add(fileInfo[f].ToString());
-				}
-			}
+			// fileInfo = new DirectoryInfo(pdir).GetFiles("SUIMONO_PRESET_*");
+			// if (new DirectoryInfo(pdir) != null){
+			// 	for (f = 0; f < fileInfo.Length; f++){
+			// 		presetFilesArr.Add(fileInfo[f].ToString());
+			// 	}
+			// }
 			px = 0;
 			for (nx = 0; nx < presetFilesArr.Count; nx++){
 				if (!presetFilesArr[nx].ToString().Contains(".meta")) px++;
