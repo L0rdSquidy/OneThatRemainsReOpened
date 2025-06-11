@@ -203,7 +203,7 @@ public class PlayerMovementGrappling : MonoBehaviour
 			
 			 Debug.Log(stamina.StaminaDeplete());
 
-			if (moveSpeed == sprintSpeed)
+			if (moveSpeed == sprintSpeed && Stamina.instance != null)
 			{
 				 Staminas.instance.UseStamina(1);
 			}

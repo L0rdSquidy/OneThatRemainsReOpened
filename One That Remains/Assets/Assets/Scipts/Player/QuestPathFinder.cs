@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
+using Palmmedia.ReportGenerator.Core;
 
 // [RequireComponent(typeof(NavMeshAgent))]
 public class QuestPathFinder : MonoBehaviour
@@ -23,64 +24,103 @@ public class QuestPathFinder : MonoBehaviour
 	public float particleLifetime = 3f;
 
 	private NavMeshAgent agent;
+	private PlayerMovementGrappling pmg;
 	private List<GameObject> spawnedParticles = new List<GameObject>();
 	private Coroutine clearRoutine;
+	
+	private bool setTime;
+	private bool SetActivation;
+	private float timeElapsed;
 
 	void Start()
 	{
 		agent = GetComponentInChildren<NavMeshAgent>();
-		agent.enabled = false;
+		pmg = GetComponentInChildren<PlayerMovementGrappling>();
 	}
 
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			// If already showing, clear now
 			agent.enabled = true;
-			// Find & set new destination
-			TryFindBestQuestPath();
-			ClearParticles();
+			if (agent.enabled)
+			{
+				ClearParticles();
+				TryFindBestQuestPath();
+			}
+			pmg.enabled = false;
+			SetActivation = true;
+		}
+		if (SetActivation)
+		{
+			timeElapsed += Time.deltaTime;
+			if (timeElapsed > 0.2f)
+			{
+				setTime = true;
+				timeElapsed = 0;
+				ClearParticles();
+				TryFindBestQuestPath();
+				SetActivation = false;
+			}	
+		}
+		if (setTime)
+		{
+			timeElapsed += Time.deltaTime;
+			if (timeElapsed > 0.2f)
+			{
+				pmg.enabled = true;
+				agent.enabled = false;
+				setTime = false;
+				timeElapsed = 0;
+			}
 		}
 	}
 
 	void TryFindBestQuestPath()
 	{
-		
-		Collider[] hits = Physics.OverlapSphere(transform.position, searchRadius, objectiveLayer);
+		Collider[] hits = null;
+		hits = Physics.OverlapSphere(transform.position, searchRadius, objectiveLayer);
 		float bestCost = Mathf.Infinity;
 		Vector3 bestTargetPos = Vector3.zero;
 		Debug.Log(hits[0]);
+		if (agent.isOnNavMesh == false)
+		{
+			Debug.LogError("Agent is not on the NavMesh!");
+			return;
+		}
+
 
 		foreach (var hit in hits)
 		{
-			Debug.Log(hit.gameObject);
-			NavMeshPath path = new NavMeshPath();
+			NavMeshPath path;
+			path = new NavMeshPath();
 			Debug.Log(NavMesh.CalculatePath(transform.position, hit.transform.position, NavMesh.AllAreas, path));
-			Debug.Log(path.status != NavMeshPathStatus.PathComplete);
-			if (!NavMesh.CalculatePath(transform.position, hit.transform.position, NavMesh.AllAreas, path) || path.status != NavMeshPathStatus.PathComplete)
-			{
-				continue;
-			}
-
-			
+			Debug.Log($"Path status: {path.status} | Corners: {path.corners.Length}");
+			if (!NavMesh.CalculatePath(transform.position, hit.transform.position, NavMesh.AllAreas, path))
+				{
+					Debug.LogWarning("Failed to calculate path to: " + hit.transform.name);
+					continue;
+				}
+				if (path.status != NavMeshPathStatus.PathComplete)
+				{
+					Debug.LogWarning("Incomplete path to: " + hit.transform.name);
+					continue;
+				}
 			float cost = EvaluatePathCost(path);
 			Debug.Log(cost);
 			if (cost < bestCost)
 			{
 				bestCost = cost;
 				bestTargetPos = hit.transform.position;
-				Debug.Log(hit.transform.position);
+				
+				// Debug.Log(hit.transform.position);
 			}
 		}
 		Debug.Log(bestCost);
 		if (bestCost < Mathf.Infinity)
 		{
 			agent.SetDestination(bestTargetPos);
-			
-			// Visualize with particles
 			SpawnPathParticles(agent.path);
-			// Schedule auto-clear
 			clearRoutine = StartCoroutine(AutoClearParticles());
 			
 		}
@@ -121,6 +161,7 @@ public class QuestPathFinder : MonoBehaviour
 		Vector3[] corners = path.corners;
 		for (int i = 0; i < corners.Length - 1; i++)
 		{
+			Debug.Log("hey");
 			Vector3 start = corners[i];
 			Vector3 end = corners[i + 1];
 			float segmentLen = Vector3.Distance(start, end);
@@ -128,34 +169,41 @@ public class QuestPathFinder : MonoBehaviour
 
 			for (int j = 0; j <= count; j++)
 			{
+				Debug.Log("hey");
 				float t = (count > 0) ? (float)j / count : 0f;
 				Vector3 pos = Vector3.Lerp(start, end, t);
 				var p = Instantiate(particlePrefab, pos, Quaternion.identity);
+				Debug.DrawRay(pos, Vector3.up, Color.green, 5f);
+				// Debug.Log(particleLifetime);
 				spawnedParticles.Add(p);
-				// If you want them to self-destruct as well, uncomment:
-				Destroy(p, particleLifetime);
+				// Destroy(p, particleLifetime);
 			}
 		}
+		path = null;
 	}
 
 	void ClearParticles()
 	{
-		// agent.enabled = false;
+		
 		if (clearRoutine != null)
 		{
-			// agent.enabled = false;
 			StopCoroutine(clearRoutine);
 			clearRoutine = null;
 		}
-
+		
 		foreach (var p in spawnedParticles)
-			if (p != null) Destroy(p);
+			if (p != null) 
+			
+			{
+				Destroy(p);
+			}
 		spawnedParticles.Clear();
 	}
 
 	IEnumerator AutoClearParticles()
 	{
 		yield return new WaitForSeconds(particleLifetime);
+		// Debug.Log("Destroy");
 		ClearParticles();
 	}
 }

@@ -10,6 +10,7 @@ TagManager:
   - Hit
   - zipline
   - Objective
+  - ObjectiveDestroy
   layers:
   - Default
   - TransparentFX
