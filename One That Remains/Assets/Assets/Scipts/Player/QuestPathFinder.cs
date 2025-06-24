@@ -161,7 +161,6 @@ public class QuestPathFinder : MonoBehaviour
 		Vector3[] corners = path.corners;
 		for (int i = 0; i < corners.Length - 1; i++)
 		{
-			Debug.Log("hey");
 			Vector3 start = corners[i];
 			Vector3 end = corners[i + 1];
 			float segmentLen = Vector3.Distance(start, end);
@@ -169,10 +168,9 @@ public class QuestPathFinder : MonoBehaviour
 
 			for (int j = 0; j <= count; j++)
 			{
-				Debug.Log("hey");
 				float t = (count > 0) ? (float)j / count : 0f;
 				Vector3 pos = Vector3.Lerp(start, end, t);
-				var p = Instantiate(particlePrefab, pos, Quaternion.identity);
+				var p = Instantiate(particlePrefab, pos + Vector3.up * 1.5f, Quaternion.identity);
 				Debug.DrawRay(pos, Vector3.up, Color.green, 5f);
 				// Debug.Log(particleLifetime);
 				spawnedParticles.Add(p);

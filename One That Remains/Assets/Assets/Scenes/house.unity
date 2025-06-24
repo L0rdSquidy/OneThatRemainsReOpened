@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.1
+  m_FogDensity: 0.06
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -898,11 +898,6 @@ PrefabInstance:
 --- !u!4 &21541423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5497921697139542543, guid: 366f9f41baad6b24f919ace7408e04b2, type: 3}
-  m_PrefabInstance: {fileID: 21541422}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &21541424 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9073708554419577532, guid: 366f9f41baad6b24f919ace7408e04b2, type: 3}
   m_PrefabInstance: {fileID: 21541422}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &24301142
@@ -4774,8 +4769,7 @@ PrefabInstance:
       propertyPath: volumeLayer.m_Bits
       value: 1050624
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8613147783875113953, guid: e094bcd65691b49438610195e4457df1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5478,11 +5472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d723d6c2133424c9dab7581f912672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bho: {fileID: 21541424}
-  CataPult: {fileID: 650785977}
-  CataPultText: {fileID: 377747345}
-  CataPultInteract: {fileID: 1768846092}
-  Bitha: 0
 --- !u!65 &197571055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9819,11 +9808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d723d6c2133424c9dab7581f912672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bho: {fileID: 21541424}
-  CataPult: {fileID: 650785977}
-  CataPultText: {fileID: 377747345}
-  CataPultInteract: {fileID: 1768846092}
-  Bitha: 0
 --- !u!65 &328739160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19788,11 +19772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d723d6c2133424c9dab7581f912672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bho: {fileID: 21541424}
-  CataPult: {fileID: 650785977}
-  CataPultText: {fileID: 377747345}
-  CataPultInteract: {fileID: 1768846092}
-  Bitha: 0
 --- !u!65 &634257942
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20772,17 +20751,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5923185737466049587, guid: 54bd7fe9b53a8aa4daa5247d02561520, type: 3}
   m_PrefabInstance: {fileID: 650785974}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650785977}
+  m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 376fc849f47fda745a02dea9cf3fc5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &650785977 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 135882456587368177, guid: 54bd7fe9b53a8aa4daa5247d02561520, type: 3}
-  m_PrefabInstance: {fileID: 650785974}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &653118299
 GameObject:
   m_ObjectHideFlags: 0
@@ -34092,8 +34066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 0}
-  isGlobal: 0
+  sharedProfile: {fileID: 11400000, guid: 2d0c1921b2e4aeb40802cecbf785dd8e, type: 2}
+  isGlobal: 1
   blendDistance: 0
   weight: 1
   priority: 0
@@ -47823,7 +47797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2439613186919578373, guid: 27cf33e6b47bace419106fb5efeb4740, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 2439613186919578373, guid: 27cf33e6b47bace419106fb5efeb4740, type: 3}
       propertyPath: m_LocalPosition.y
@@ -47831,7 +47805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2439613186919578373, guid: 27cf33e6b47bace419106fb5efeb4740, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 2439613186919578373, guid: 27cf33e6b47bace419106fb5efeb4740, type: 3}
       propertyPath: m_LocalRotation.w
@@ -72367,7 +72341,7 @@ PrefabInstance:
       objectReference: {fileID: 2121142226}
     - target: {fileID: 2117872945152674959, guid: 366f9f41baad6b24f919ace7408e04b2, type: 3}
       propertyPath: ZippingTime
-      value: 4
+      value: 1.88
       objectReference: {fileID: 0}
     - target: {fileID: 2294418365126813660, guid: 366f9f41baad6b24f919ace7408e04b2, type: 3}
       propertyPath: m_Size.y
